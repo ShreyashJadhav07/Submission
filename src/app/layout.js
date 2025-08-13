@@ -31,6 +31,7 @@
 import "./globals.css";
 import Layout from "@/components/Layout";
 import { Toaster } from "react-hot-toast";
+import { DashboardProvider } from "@/context/DashBoardContext";
 
 export const metadata = {
   title: "Financial Dashboard",
@@ -41,10 +42,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Layout>
-          <Toaster position="top-right" />
-          {children}
-        </Layout>
+        <DashboardProvider>
+          <Layout>
+            <Toaster position="top-right" />
+            {children}
+          </Layout>
+        </DashboardProvider>
       </body>
     </html>
   );
