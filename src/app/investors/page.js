@@ -1,10 +1,11 @@
+// app/investors/InvestorsContent.js
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import investors from "@/data/investors.json";
 import { useSearchParams } from "next/navigation";
 
-export default function InvestorsPage() {
+export default function InvestorsContent() {
   const searchParams = useSearchParams();
   const scheme = searchParams.get("scheme");
 
