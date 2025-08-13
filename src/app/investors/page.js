@@ -12,21 +12,29 @@ export default function InvestorsPage() {
     : investors;
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {filtered.map((inv) => (
-        <Card key={inv.id}>
-          <CardHeader>
-            <CardTitle>{inv.name}</CardTitle>
+        <Card
+          key={inv.id}
+          className="bg-card text-card-foreground rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-border"
+        >
+          <CardHeader className="pb-2">
+            <CardTitle className="text-lg font-semibold">
+              {inv.name}
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">Scheme: {inv.scheme}</p>
+          <CardContent className="pt-0">
+            <p className="text-sm text-muted-foreground">
+              <span className="font-medium">Scheme:</span> {inv.scheme}
+            </p>
           </CardContent>
         </Card>
       ))}
 
       {filtered.length === 0 && (
-        <p className="col-span-full text-center text-gray-500">
-          No investors found for {scheme}.
+        <p className="col-span-full text-center text-muted-foreground text-base py-10">
+          No investors found for{" "}
+          <span className="font-semibold">{scheme}</span>.
         </p>
       )}
     </div>

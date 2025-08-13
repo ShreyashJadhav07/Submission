@@ -4,16 +4,16 @@ import { createContext, useContext, useState, useEffect } from "react";
 const DashboardContext = createContext();
 
 export function DashboardProvider({ children }) {
-  // To-Do reminders
+ 
   const [todos, setTodos] = useState([
     { id: 1, text: "Call client about investment", reminded: false },
     { id: 2, text: "Review portfolio changes", reminded: false },
   ]);
 
-  // Dark mode
+
   const [dark, setDark] = useState(false);
 
-  // On mount, sync dark mode with localStorage
+ 
   useEffect(() => {
     const saved = localStorage.getItem("theme") === "dark";
     setDark(saved);

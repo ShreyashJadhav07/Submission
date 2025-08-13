@@ -1,6 +1,6 @@
 export function getChartColors() {
   if (typeof window === 'undefined' || !window.getComputedStyle) {
-    // Return defaults on server or if getComputedStyle is unavailable
+   
     return {
       chart1: '#6366F1',
       chart2: '#22C55E',
