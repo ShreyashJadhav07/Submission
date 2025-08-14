@@ -1,7 +1,3 @@
-
-
-
-
 "use client";
 
 import AnimatedCard from "@/components/AnimatedCard";
@@ -96,11 +92,11 @@ export default function AssetsChart() {
     <AnimatedCard>
       <Card className="bg-card text-card-foreground rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-border w-full">
         <CardHeader className="pb-1">
-          <div className="flex justify-between items-center">
-            <CardTitle className="text-lg font-semibold">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+            <CardTitle className="text-lg sm:text-xl font-semibold text-center sm:text-left">
               Assets Under Management
             </CardTitle>
-            <select className="text-sm bg-transparent border rounded px-2 py-1 text-muted-foreground">
+            <select className="text-sm bg-transparent border rounded px-2 py-1 text-muted-foreground w-full sm:w-auto">
               <option>Today</option>
               <option>Yesterday</option>
               <option>This Week</option>
@@ -108,21 +104,20 @@ export default function AssetsChart() {
           </div>
         </CardHeader>
 
-        {/* Fixed height with vertical centering */}
-        <CardContent className="flex items-center justify-center h-[350px]">
+        <CardContent className="flex items-center justify-center h-auto sm:h-[350px] py-4 sm:py-0">
           <div className="flex flex-col lg:flex-row gap-6 h-full w-full">
             
             {/* Left side - Donut Chart */}
             <div className="flex-1 flex flex-col items-center justify-center space-y-4">
-              <div className="h-77 sm:h-60 w-full flex items-center justify-center">
+              <div className="h-64 w-full flex items-center justify-center sm:h-60 md:h-72">
                 <Doughnut data={data} options={options} />
               </div>
             </div>
 
             {/* Right side - Scheme List */}
             <div className="flex-1 flex flex-col justify-center space-y-4 min-w-0">
-              <div>
-                <h3 className="text-blue-600 font-semibold text-lg mb-1">
+              <div className="text-center lg:text-left">
+                <h3 className="text-blue-600 font-semibold text-lg sm:text-xl mb-1">
                   Top Schemes
                 </h3>
                 <p className="text-sm text-muted-foreground">
@@ -134,7 +129,7 @@ export default function AssetsChart() {
                 {data.labels.map((scheme, idx) => (
                   <li
                     key={idx}
-                    className="flex items-center justify-between p-3 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors border border-border/50"
+                    className="flex items-center justify-between p-3 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors border border-border/50 text-sm sm:text-base"
                     onClick={() => handleClick(scheme)}
                   >
                     <div className="flex items-center gap-3">
@@ -145,9 +140,7 @@ export default function AssetsChart() {
                             data.datasets[0].backgroundColor[idx],
                         }}
                       ></span>
-                      <span className="font-medium text-sm sm:text-base">
-                        {scheme}
-                      </span>
+                      <span className="font-medium">{scheme}</span>
                     </div>
                     <span className="text-xs sm:text-sm text-muted-foreground bg-muted px-2 py-1 rounded">
                       View

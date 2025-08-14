@@ -101,14 +101,14 @@ export default function LeadsOverview() {
       {
         label: "Investment",
         data: [45, 30, 25],
-        backgroundColor: "#1E90FF", // Dark blue
-        borderColor: "#1E90FF", // Dark blue
+        backgroundColor: "#1E90FF",
+        borderColor: "#1E90FF",
         borderWidth: 3,
         fill: false,
         tension: 0.3,
         pointRadius: 5,
         pointHoverRadius: 7,
-        pointBackgroundColor: "#1E90FF", // Dark blue
+        pointBackgroundColor: "#1E90FF",
         pointBorderColor: isDark ? "#1f2937" : "#ffffff",
         pointBorderWidth: 2,
       },
@@ -122,9 +122,9 @@ export default function LeadsOverview() {
         label: "Leads",
         data: [12, 7, 5],
         backgroundColor: [
-          "#87CEEB", // Light blue
-          "#1E90FF", // Dark blue
-          "#4169E1", // Medium blue
+          "#87CEEB",
+          "#1E90FF",
+          "#4169E1",
         ],
         borderWidth: isDark ? 2 : 1,
         borderColor: isDark ? "#374151" : "#ffffff",
@@ -147,20 +147,12 @@ export default function LeadsOverview() {
     },
     scales: {
       x: {
-        ticks: {
-          color: isDark ? "#9ca3af" : "#6b7280",
-        },
-        grid: {
-          color: isDark ? "#374151" : "#f3f4f6",
-        },
+        ticks: { color: isDark ? "#9ca3af" : "#6b7280" },
+        grid: { color: isDark ? "#374151" : "#f3f4f6" },
       },
       y: {
-        ticks: {
-          color: isDark ? "#9ca3af" : "#6b7280",
-        },
-        grid: {
-          color: isDark ? "#374151" : "#f3f4f6",
-        },
+        ticks: { color: isDark ? "#9ca3af" : "#6b7280" },
+        grid: { color: isDark ? "#374151" : "#f3f4f6" },
       },
     },
   };
@@ -173,11 +165,8 @@ export default function LeadsOverview() {
         position: "bottom",
         labels: {
           usePointStyle: true,
-          font: {
-            size: 12,
-          },
-          color: "#1E90FF", // Dark blue for legend
-          fontColor: "#1E90FF",
+          font: { size: 12 },
+          color: "#1E90FF",
           padding: 15,
           boxWidth: 12,
           boxHeight: 12,
@@ -211,20 +200,12 @@ export default function LeadsOverview() {
             Leads Overview
           </CardTitle>
         </CardHeader>
-        <CardContent className="pt-0 flex space-x-4">
-          <div className="w-1/2 h-48">
-            <Pie
-              key={`pie-${chartKey}`}
-              data={pieData}
-              options={pieOptions}
-            />
+        <CardContent className="pt-0 flex flex-col sm:flex-row sm:space-x-4 space-y-6 sm:space-y-0">
+          <div className="w-full sm:w-1/2 h-56 sm:h-64">
+            <Pie key={`pie-${chartKey}`} data={pieData} options={pieOptions} />
           </div>
-          <div className="w-1/2 h-48">
-            <Line
-              key={`line-${chartKey}`}
-              data={lineData}
-              options={lineOptions}
-            />
+          <div className="w-full sm:w-1/2 h-56 sm:h-64">
+            <Line key={`line-${chartKey}`} data={lineData} options={lineOptions} />
           </div>
         </CardContent>
       </Card>
