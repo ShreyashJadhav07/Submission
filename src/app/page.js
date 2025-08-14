@@ -1,32 +1,3 @@
-// import TransactionSnapshot from "@/components/dashboard/TransactionSnapshot";
-// import TodoList from "@/components/dashboard/TodoList";
-// import AssetsChart from "@/components/dashboard/AssetsChart";
-// import MarketOverview from "@/components/dashboard/MarketOverview";
-// import LeadsOverview from "@/components/dashboard/LeadsOverview";
-
-// export default function DashboardPage() {
-//   return (
-//     <div className="space-y-6">
-     
-//       <div className="grid gap-6 lg:grid-cols-3">
-//         <div className="lg:col-span-2">
-//           <TransactionSnapshot />
-//         </div>
-//         <TodoList />
-//       </div>
-
-     
-//       <div className="grid gap-6 lg:grid-cols-3">
-//         <AssetsChart />
-//         <MarketOverview />
-      
-//       </div>
-
-      
-//       <LeadsOverview />
-//     </div>
-//   );
-// }
 import TransactionSnapshot from "@/components/dashboard/TransactionSnapshot";
 import TodoList from "@/components/dashboard/TodoList";
 import AssetsChart from "@/components/dashboard/AssetsChart";

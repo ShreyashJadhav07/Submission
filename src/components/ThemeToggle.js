@@ -8,7 +8,7 @@ export default function ThemeToggle() {
   const { dark, toggleTheme } = useDashboard();
 
   return (
-    <Button variant="outline" onClick={toggleTheme}>
+    <Button variant="outline" onClick={toggleTheme} className="cursor-pointer">
       {dark ? "Light" : "Dark"}
     </Button>
   );
