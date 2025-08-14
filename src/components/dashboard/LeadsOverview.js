@@ -28,10 +28,9 @@ ChartJS.register(
 
 function getChartColors(theme) {
   if (typeof window === "undefined" || !window.getComputedStyle) {
-   
     return {
       chart1: "#6366F1",
-      chart2: "#22C55E", 
+      chart2: "#22C55E",
       chart3: "#F59E0B",
       chart4: "#EF4444",
       chart5: "#3B82F6",
@@ -39,21 +38,18 @@ function getChartColors(theme) {
   }
 
   const style = getComputedStyle(document.documentElement);
-  
-
   const baseColors = {
     chart1: style.getPropertyValue("--chart-1").trim() || "#6366F1",
     chart2: style.getPropertyValue("--chart-2").trim() || "#22C55E",
-    chart3: style.getPropertyValue("--chart-3").trim() || "#F59E0B", 
+    chart3: style.getPropertyValue("--chart-3").trim() || "#F59E0B",
     chart4: style.getPropertyValue("--chart-4").trim() || "#EF4444",
     chart5: style.getPropertyValue("--chart-5").trim() || "#3B82F6",
   };
 
-
   if (theme === "dark") {
     return {
       ...baseColors,
-      chart1: "#FFFFFF", 
+      chart1: "#FFFFFF",
     };
   }
 
@@ -66,13 +62,11 @@ export default function LeadsOverview() {
   const [chartColors, setChartColors] = useState({
     chart1: "#6366F1",
     chart2: "#22C55E",
-    chart3: "#F59E0B", 
+    chart3: "#F59E0B",
     chart4: "#EF4444",
     chart5: "#3B82F6",
   });
-  
   const [chartKey, setChartKey] = useState(0);
-
 
   useEffect(() => {
     setMounted(true);
@@ -86,12 +80,9 @@ export default function LeadsOverview() {
       setChartKey(prev => prev + 1);
     };
 
-  
     const timeout = setTimeout(updateColors, 100);
-
-   
     const observer = new MutationObserver(() => {
-      setTimeout(updateColors, 50); 
+      setTimeout(updateColors, 50);
     });
     observer.observe(document.documentElement, {
       attributes: true,
@@ -104,21 +95,19 @@ export default function LeadsOverview() {
     };
   }, [resolvedTheme, mounted]);
 
-
   useEffect(() => {
     const updateLegendColors = () => {
       const legendElements = document.querySelectorAll('.chartjs-legend-label-text, canvas + div, [role="img"] + div');
       legendElements.forEach(el => {
         if (el.style) {
-          el.style.color = '#3B82F6'; 
+          el.style.color = '#3B82F6';
         }
       });
     };
 
     const timeout = setTimeout(updateLegendColors, 200);
     return () => clearTimeout(timeout);
-  }, [chartKey]); 
-
+  }, [chartKey]);
 
   if (!mounted) {
     return (
@@ -152,7 +141,7 @@ export default function LeadsOverview() {
         data: [45, 30, 25],
         backgroundColor: chartColors.chart1,
         borderColor: chartColors.chart1,
-        borderWidth: 3, 
+        borderWidth: 3,
         fill: false,
         tension: 0.3,
         pointRadius: 5,
@@ -171,9 +160,9 @@ export default function LeadsOverview() {
         label: "Leads",
         data: [12, 7, 5],
         backgroundColor: [
-          chartColors.chart4, 
-          chartColors.chart3, 
-          chartColors.chart5, 
+          chartColors.chart4,
+          chartColors.chart3,
+          chartColors.chart5,
         ],
         borderWidth: isDark ? 2 : 1,
         borderColor: isDark ? "#374151" : "#ffffff",
@@ -218,20 +207,19 @@ export default function LeadsOverview() {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: { 
-        position: "bottom", 
-        labels: { 
-          usePointStyle: true, 
-          font: { 
+      legend: {
+        position: "bottom",
+        labels: {
+          usePointStyle: true,
+          font: {
             size: 12,
           },
-          
           color: "#3B82F6",
-          fontColor: "#3B82F6", 
+          fontColor: "#3B82F6",
           padding: 15,
           boxWidth: 12,
           boxHeight: 12,
-        } 
+        }
       },
       tooltip: {
         backgroundColor: isDark ? "#1f2937" : "#ffffff",
@@ -261,22 +249,21 @@ export default function LeadsOverview() {
             Leads Overview
           </CardTitle>
         </CardHeader>
-        <CardContent className="pt-0">
-          {/* Line Chart */}
-          <div className="h-40 sm:h-48 mb-4">
-            <Line 
-              key={`line-${chartKey}`}
-              data={lineData} 
-              options={lineOptions} 
+        <CardContent className="pt-0 flex space-x-4">
+          {/* Pie Chart (Left) */}
+          <div className="w-1/2 h-48">
+            <Pie
+              key={`pie-${chartKey}`}
+              data={pieData}
+              options={pieOptions}
             />
           </div>
-
-          {/* Pie Chart */}
-          <div className="h-40 sm:h-48">
-            <Pie 
-              key={`pie-${chartKey}`}
-              data={pieData} 
-              options={pieOptions} 
+          {/* Line Chart (Right) */}
+          <div className="w-1/2 h-48">
+            <Line
+              key={`line-${chartKey}`}
+              data={lineData}
+              options={lineOptions}
             />
           </div>
         </CardContent>

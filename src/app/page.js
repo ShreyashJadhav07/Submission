@@ -1,3 +1,32 @@
+// import TransactionSnapshot from "@/components/dashboard/TransactionSnapshot";
+// import TodoList from "@/components/dashboard/TodoList";
+// import AssetsChart from "@/components/dashboard/AssetsChart";
+// import MarketOverview from "@/components/dashboard/MarketOverview";
+// import LeadsOverview from "@/components/dashboard/LeadsOverview";
+
+// export default function DashboardPage() {
+//   return (
+//     <div className="space-y-6">
+     
+//       <div className="grid gap-6 lg:grid-cols-3">
+//         <div className="lg:col-span-2">
+//           <TransactionSnapshot />
+//         </div>
+//         <TodoList />
+//       </div>
+
+     
+//       <div className="grid gap-6 lg:grid-cols-3">
+//         <AssetsChart />
+//         <MarketOverview />
+      
+//       </div>
+
+      
+//       <LeadsOverview />
+//     </div>
+//   );
+// }
 import TransactionSnapshot from "@/components/dashboard/TransactionSnapshot";
 import TodoList from "@/components/dashboard/TodoList";
 import AssetsChart from "@/components/dashboard/AssetsChart";
@@ -6,23 +35,27 @@ import LeadsOverview from "@/components/dashboard/LeadsOverview";
 
 export default function DashboardPage() {
   return (
-    <div className="grid gap-6 lg:grid-cols-3">
-     
-      <div className="flex flex-col gap-6">
+    <div className="space-y-6">
+      {/* Transaction Snapshot + To-Do's side by side */}
+      <div className="grid gap-6 lg:grid-cols-2 items-stretch">
         <TransactionSnapshot />
         <TodoList />
       </div>
 
-    
-      <div className="flex flex-col gap-6">
-        <AssetsChart />
-        <MarketOverview />
+      {/* Assets & Market Overview - Fixed Layout */}
+      <div className="grid gap-6 lg:grid-cols-5">
+        {/* AssetsChart takes 3 columns (60% width) */}
+        <div className="lg:col-span-3">
+          <AssetsChart />
+        </div>
+        {/* MarketOverview takes 2 columns (40% width) */}
+        <div className="lg:col-span-2">
+          <MarketOverview />
+        </div>
       </div>
 
-      
-      <div className="flex flex-col gap-6">
-        <LeadsOverview />
-      </div>
+      {/* Leads Overview */}
+      <LeadsOverview />
     </div>
   );
 }
